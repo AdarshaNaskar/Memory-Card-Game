@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A beautiful card-flipping memory game with multiple difficulty levels, timer, move tracking, and best-score persistence." />
+  <title>Memory Game — Card Flip Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>" />
+</head>
+<body>
+
+  <!-- Background floating orbs -->
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="game-header">
+      <h1 class="game-title">Memory Game</h1>
+      <p class="game-subtitle">Test Your Memory</p>
+    </header>
+
+    <!-- ========== START SCREEN ========== -->
+    <section id="start-screen" class="screen active">
+      <div class="glass-panel">
+        <h2 class="level-title">Choose Your Difficulty</h2>
+        <div class="level-grid">
+
+          <div class="level-card easy" id="level-easy" tabindex="0" role="button" aria-label="Easy – 8 pairs on a 4 by 4 grid">
+            <span class="level-icon">🌱</span>
+            <div class="level-name">Easy</div>
+            <div class="level-desc">4 × 4 · 8 pairs</div>
+          </div>
+
+          <div class="level-card medium" id="level-medium" tabindex="0" role="button" aria-label="Medium – 12 pairs on a 4 by 6 grid">
+            <span class="level-icon">🔥</span>
+            <div class="level-name">Medium</div>
+            <div class="level-desc">4 × 6 · 12 pairs</div>
+          </div>
+
+          <div class="level-card hard" id="level-hard" tabindex="0" role="button" aria-label="Hard – 18 pairs on a 6 by 6 grid">
+            <span class="level-icon">💎</span>
+            <div class="level-name">Hard</div>
+            <div class="level-desc">6 × 6 · 18 pairs</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GAME SCREEN ========== -->
+    <section id="game-screen" class="screen">
+
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-icon">⏱️</span>
+          <div class="stat-info">
+            <span class="stat-label">Time</span>
+            <span class="stat-value timer" id="stat-timer">00:00</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🎯</span>
+          <div class="stat-info">
+            <span class="stat-label">Moves</span>
+            <span class="stat-value moves" id="stat-moves">0</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🏆</span>
+          <div class="stat-info">
+            <span class="stat-label">Best</span>
+            <span class="stat-value best" id="stat-best">—</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">✅</span>
+          <div class="stat-info">
+            <span class="stat-label">Pairs</span>
+            <span class="stat-value pairs" id="stat-pairs">0 / 0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Board -->
+      <div class="game-board" id="game-board"></div>
+
+      <!-- Controls -->
+      <div class="game-controls">
+        <button class="btn btn-primary" id="btn-restart">🔄 Restart</button>
+        <button class="btn btn-secondary" id="btn-back">🏠 Menu</button>
+      </div>
+
+    </section>
+
+    <!-- ========== WIN SCREEN ========== -->
+    <section id="win-screen" class="screen">
+      <div class="glass-panel">
+        <span class="win-icon">🏆</span>
+        <h2 class="win-title">You Won!</h2>
+        <p class="win-subtitle" id="win-subtitle">Incredible performance!</p>
+
+        <div class="win-stats">
+          <div class="win-stat">
+            <span class="win-stat-value" id="win-time">00:00</span>
+            <span class="win-stat-label">Time</span>
+          </div>
+          <div class="win-stat">
+            <span class="win-stat-value" id="win-moves">0</span>
+            <span class="win-stat-label">Moves</span>
+            <span class="new-best hidden" id="win-new-best">🎉 New Best!</span>
+          </div>
+        </div>
+
+        <div class="win-actions">
+          <button class="btn btn-primary" id="btn-play-again">🔄 Play Again</button>
+          <button class="btn btn-secondary" id="btn-change-level">🏠 Change Level</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Confetti container (injected via JS) -->
+  <div class="confetti-container" id="confetti-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
